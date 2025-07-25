@@ -1,6 +1,7 @@
 from aiogram import Router, F
 from aiogram.types import CallbackQuery
 from keyboards.main_menu import main_menu
+from utils import safe_edit_message
 
 router = Router()
 
@@ -11,5 +12,5 @@ async def contact_us_handler(query: CallbackQuery):
         "📞 Менеджер: @yourmanager\n"
         "📧 Почта: bots@example.com"
     )
-    await query.message.edit_text(text, reply_markup=main_menu)
+    await safe_edit_message(query.message, text=text, reply_markup=main_menu)
     await query.answer()

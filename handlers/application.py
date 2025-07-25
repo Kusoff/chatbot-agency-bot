@@ -3,6 +3,7 @@ from aiogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardBut
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 import re
+from sheets import add_lead_to_sheet
 
 from config import ADMIN_ID
 
@@ -10,11 +11,11 @@ router = Router()
 
 main_menu_kb = InlineKeyboardMarkup(
     inline_keyboard=[
-        [InlineKeyboardButton(text="Что мы делаем", callback_data="services")],
-        [InlineKeyboardButton(text="Тарифы и кейсы", callback_data="tariffs_cases")],
-        [InlineKeyboardButton(text="Оставить заявку", callback_data="application")],
-        [InlineKeyboardButton(text="Частые вопросы", callback_data="faq")],
-        [InlineKeyboardButton(text="Связаться с нами", callback_data="contact")]
+        [InlineKeyboardButton(text="💼 Что мы делаем", callback_data="services")],
+        [InlineKeyboardButton(text="💰 Тарифы и кейсы", callback_data="tariffs_cases")],
+        [InlineKeyboardButton(text="📝 Оставить заявку", callback_data="application")],
+        [InlineKeyboardButton(text="❓ Частые вопросы", callback_data="faq")],
+        [InlineKeyboardButton(text="📞 Связаться с нами", callback_data="contact")]
     ]
 )
 
@@ -102,6 +103,9 @@ async def get_description(message: Message, state: FSMContext):
     description = message.text
     bot_message_id = data.get("bot_message_id")
 
+    # Сохраняем в Google Sheets
+    add_lead_to_sheet(name, contact, description)
+
     await state.clear()
     await message.delete()
 
@@ -113,7 +117,6 @@ async def get_description(message: Message, state: FSMContext):
     )
     await message.bot.send_message(ADMIN_ID, text)
 
-    # Завершаем, редактируем исходное сообщение бота с формой
     await message.bot.edit_message_text(
         chat_id=message.chat.id,
         message_id=bot_message_id,

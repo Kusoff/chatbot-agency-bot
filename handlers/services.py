@@ -6,21 +6,21 @@ router = Router()
 
 main_menu_kb = InlineKeyboardMarkup(
     inline_keyboard=[
-        [InlineKeyboardButton(text="Что мы делаем", callback_data="services")],
-        [InlineKeyboardButton(text="Тарифы и кейсы", callback_data="tariffs_cases")],
-        [InlineKeyboardButton(text="Оставить заявку", callback_data="application")],
-        [InlineKeyboardButton(text="Частые вопросы", callback_data="faq")],
-        [InlineKeyboardButton(text="Связаться с нами", callback_data="contact")]
+        [InlineKeyboardButton(text="💼 Что мы делаем", callback_data="services")],
+        [InlineKeyboardButton(text="💰 Тарифы и кейсы", callback_data="tariffs_cases")],
+        [InlineKeyboardButton(text="📝 Оставить заявку", callback_data="application")],
+        [InlineKeyboardButton(text="❓ Частые вопросы", callback_data="faq")],
+        [InlineKeyboardButton(text="📞 Связаться с нами", callback_data="contact")]
     ]
 )
 
 services_kb = InlineKeyboardMarkup(
     inline_keyboard=[
-        [InlineKeyboardButton(text="🔹 Боты для продаж", callback_data="service_sales")],
-        [InlineKeyboardButton(text="🔹 Поддержка клиентов", callback_data="service_support")],
-        [InlineKeyboardButton(text="🔹 Автоматизация HR и обучения", callback_data="service_hr")],
-        [InlineKeyboardButton(text="🔹 Игровые боты (геймификация)", callback_data="service_gamification")],
-        [InlineKeyboardButton(text="🔹 AI-боты (ChatGPT API, Dialogflow)", callback_data="service_ai")],
+        [InlineKeyboardButton(text="🤖 Боты для продаж", callback_data="service_sales")],
+        [InlineKeyboardButton(text="💬 Поддержка клиентов", callback_data="service_support")],
+        [InlineKeyboardButton(text="👥 Автоматизация HR и обучения", callback_data="service_hr")],
+        [InlineKeyboardButton(text="🎮 Игровые боты (геймификация)", callback_data="service_gamification")],
+        [InlineKeyboardButton(text="🧠 AI-боты (ChatGPT API, Dialogflow)", callback_data="service_ai")],
         [InlineKeyboardButton(text="⬅️ Назад", callback_data="back_to_main")]
     ]
 )
